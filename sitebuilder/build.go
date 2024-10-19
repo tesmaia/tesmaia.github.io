@@ -70,7 +70,7 @@ func main() {
 		}
 
 		toWrite := []byte(text)
-		err = ioutil.WriteFile(basePath+"\\site\\"+file, toWrite, 0777)
+		err = ioutil.WriteFile(basePath+"\\docs\\"+file, toWrite, 0777)
 		if err == nil {
 			fmt.Println("File written succesfully")
 		} else {
