@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const basePath = "C:\\Users\\Tessa\\Documents\\GitHub\\GithubPages\\tesmaia.github.io"
+const basePath = ".\\.."
 
 func getFiles(dir string) []string {
 	return []string{
