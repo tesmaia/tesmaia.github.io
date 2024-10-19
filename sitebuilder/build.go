@@ -65,16 +65,17 @@ func main() {
 
 		for key := range maps.Keys(fragments) {
 			pattern := fmt.Sprintf("<!-- @replace %v -->", key)
+			replacement := fragments[key]
 
-			text = strings.ReplaceAll(text, pattern, fragments[key])
+			text = strings.ReplaceAll(text, pattern, replacement)
 		}
 
 		toWrite := []byte(text)
 		err = ioutil.WriteFile(basePath+"\\docs\\"+file, toWrite, 0777)
 		if err == nil {
-			fmt.Println("File written succesfully")
+			fmt.Println("File written succesfully: " + file)
 		} else {
-			fmt.Println("File write failed")
+			fmt.Println("File write failed: " + file)
 		}
 
 	}

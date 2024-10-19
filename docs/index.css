@@ -254,3 +254,49 @@ badge {
   translate: 0 -4px;
   border-radius: 7px;
 }
+
+
+nav ul.dropdown {
+  color: var(--text-color);
+
+  
+  padding: 0 1rem;
+  margin-left: -1rem;
+
+  min-height: 0;
+  overflow-y: hidden;
+
+  display: grid;
+}
+
+nav .dropdown-container {
+  position: absolute;
+  grid-template-rows: 0fr;
+  display: grid;
+  transition:  0.3s grid-template-rows  linear;
+  min-height: 0;
+  overflow-y: hidden;
+
+  padding: 0 1rem;
+  margin-left: -1rem;
+
+  li {
+    padding: 0.1rem 1rem;
+    margin-left: -1rem;
+  }
+  li:first-child {
+    margin-top: 0.5rem;
+  }
+}
+
+nav > ul > li:hover > .dropdown-container, 
+nav > ul > li > a:focus ~ .dropdown-container,
+nav > ul > li > a:focus-visible ~ .dropdown-container,
+nav > ul > li:focus-within > .dropdown-container {
+  grid-template-rows: 1fr;
+ 
+}
+
+nav > ul > li:hover > a { 
+  color: #ffdd7f;
+}
