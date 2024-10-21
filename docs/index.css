@@ -331,6 +331,7 @@ nav > ul > li:hover > a {
       height: auto;
       margin-left: 0;
       margin-bottom: 0.5rem;
+      text-align: left;
     }
   }
 }
