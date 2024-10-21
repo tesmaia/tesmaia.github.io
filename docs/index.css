@@ -220,6 +220,7 @@ article {
   .image-right {
     height: 0;
     margin-left: auto;
+    text-align: right;
   }
   
 
