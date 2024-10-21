@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"iter"
 	"maps"
+	"sort"
 	"strings"
 )
 
@@ -51,6 +53,36 @@ func getFragments() map[string]string {
 	return fragments
 }
 
+// Convert an iterator to a slice of strings
+func collectSeqToSlice(seq iter.Seq[string], startsWith string) []string {
+	var result []string
+	for value := range seq {
+		if strings.HasPrefix(value, startsWith) {
+			result = append(result, value)
+		}
+
+	}
+	return result
+}
+
+func replaceArticles(text string, fragments map[string]string) string {
+	keys := maps.Keys(fragments)
+	keysSlice := collectSeqToSlice(keys, "article_")
+	sort.Slice(keysSlice, func(i int, j int) bool {
+		return keysSlice[i] > keysSlice[j]
+	})
+
+	allArticles := ""
+	for _, key := range keysSlice {
+		allArticles += fragments[key] + "\n"
+
+	}
+
+	pattern := "<!-- @articles -->"
+	text = strings.ReplaceAll(text, pattern, allArticles)
+	return text
+}
+
 func main() {
 	files := getFiles(basePath)
 	fragments := getFragments()
@@ -69,6 +101,8 @@ func main() {
 
 			text = strings.ReplaceAll(text, pattern, replacement)
 		}
+
+		text = replaceArticles(text, fragments)
 
 		toWrite := []byte(text)
 		err = ioutil.WriteFile(basePath+"\\docs\\"+file, toWrite, 0777)
