@@ -84,7 +84,7 @@ v-flex {
 
 
 header {
-  height: 5rem;
+  min-height: 5rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -177,7 +177,7 @@ main {
       position: relative;
 
       h3{
-        font-size: xx-large;
+        font-size: x-large;
         margin-bottom: 0.5rem;
       }
     }
@@ -200,7 +200,7 @@ separator:after {
 }
 
 .size-xl {
-  font-size: 2.5em !important;
+  font-size: 2.2em !important;
 }
 
 img {
@@ -208,13 +208,20 @@ img {
 }
 
 article {
-  .float {
-    float: right;
-    margin-top: -4.75rem;
-    
-    margin-left: 2rem;
-   
+  &:has(.image-right)
+  {
+    display: flex;
+    flex-wrap: wrap;
+    > * {
+      width: 50%;
+    }
   }
+
+  .image-right {
+    height: 0;
+    margin-left: auto;
+  }
+  
 
   address {
     font-style: normal;
@@ -299,4 +306,117 @@ nav > ul > li:focus-within > .dropdown-container {
 
 nav > ul > li:hover > a { 
   color: #ffdd7f;
+}
+
+@media (max-width: 850px) {
+  main section article {
+    &:has(.image-right)
+    {
+      height: auto !important;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      > * {
+        width: 100%;
+      }
+    }
+
+    .image-right {
+      height: auto;
+      margin-left: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  header {
+    h1 {
+      font-size: calc(10px + 2vw);
+      width: 100%;
+    }
+    nav {
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  header {
+
+    padding: 0 1rem;
+    flex-wrap: nowrap;
+    h1 {
+      width: auto;
+      align-self: flex-start;
+    }
+
+    > nav {
+      align-self:flex-start;
+      margin-top: 8px;
+      padding-left: 1.5rem;
+      margin-left: auto;
+      text-align: right;
+      font-size: calc(7px + 2vw);
+    }
+    
+    > nav > ul {
+      position: relative;
+      grid-template-rows: 0fr;
+      display: grid;
+      transition:  0.3s grid-template-rows  linear;
+      min-height: 0;
+      overflow-y: hidden;
+      right:0;
+    
+      padding: 0;
+      margin-left: -1rem;
+    
+      li {
+        padding: 0.1rem 0rem;
+
+        a {
+          width: max-content;
+        }
+       
+      }
+      li:first-child {
+        margin-top: 0;
+      }
+
+      .dropdown-container {
+        position: relative;
+        text-align: right;
+        padding-right: 0rem;
+
+        .dropdown {
+          padding-right: 0rem;
+
+          li:first-child {
+            margin-top: 0;
+          }
+          li {
+            padding-right: 0.25rem;
+          }
+        }
+      }
+    }
+
+  }
+
+  main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .size-xl {
+      font-size: calc(14px + 4vw) !important;
+    }
+
+    section article {
+      font-size:  calc(6px + 1.5vw)
+    }
+
+    h3, section article h3 {
+      font-size: calc(10px + 2vw) !important;
+    }
+  }
 }
