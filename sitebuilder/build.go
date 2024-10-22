@@ -6,7 +6,9 @@ import (
 	"iter"
 	"maps"
 	"sort"
+	"strconv"
 	"strings"
+	"time"
 )
 
 const basePath = ".\\.."
@@ -83,6 +85,15 @@ func replaceArticles(text string, fragments map[string]string) string {
 	return text
 }
 
+func applyCacheBust(text string) string {
+	pattern := "$!cachebust"
+	t := time.Now().UTC().Unix()
+
+	replacement := strconv.FormatInt(t, 36)
+
+	return strings.ReplaceAll(text, pattern, replacement)
+}
+
 func main() {
 	files := getFiles(basePath)
 	fragments := getFragments()
@@ -97,12 +108,15 @@ func main() {
 
 		for key := range maps.Keys(fragments) {
 			pattern := fmt.Sprintf("<!-- @replace %v -->", key)
+			fmt.Println(key)
 			replacement := fragments[key]
 
 			text = strings.ReplaceAll(text, pattern, replacement)
 		}
 
 		text = replaceArticles(text, fragments)
+
+		text = applyCacheBust(text)
 
 		toWrite := []byte(text)
 		err = ioutil.WriteFile(basePath+"\\docs\\"+file, toWrite, 0777)

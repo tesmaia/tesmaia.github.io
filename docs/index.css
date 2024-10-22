@@ -3,6 +3,7 @@
 :root {
   --content-max-width: 800px;
   --text-color: rgba(255, 255, 255, 0.85);
+  --link-color: #ffdd7f;
 }
 
 h-flex {
@@ -90,6 +91,14 @@ header {
   align-items: center;
   padding: 0 2rem;
   margin: auto 0;
+  
+  a svg {
+    height: 14px;
+    width: 14px;
+    fill: var(--text-color);
+    translate: 0 3px;
+  }
+  
 
   nav {
     display: flex;
@@ -126,6 +135,14 @@ header {
 
 }
 
+nav svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--text-color);
+  translate: 0 2px;
+}
+
+
 body {
   background-color: #06060a;
   color: var(--text-color) ;
@@ -145,12 +162,12 @@ a:visited {
 }
 
 a:focus-visible, a:hover {
-  color: #ffdd7f;
+  color: var(--link-color);
   text-decoration: underline;
 }
 
 header nav li:focus-visible, header nav li:hover{
-  color: #ffdd7f;
+  color: var(--link-color);
 }
 
 
@@ -312,7 +329,11 @@ nav > ul > li:focus-within > .dropdown-container {
 }
 
 nav > ul > li:hover > a { 
-  color: #ffdd7f;
+  color: var(--link-color);
+
+  svg {
+    fill: var(--link-color);
+  }
 }
 
 @media (max-width: 850px) {
