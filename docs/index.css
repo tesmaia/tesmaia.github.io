@@ -276,6 +276,12 @@ article {
   white-space: pre-line;
 }
 
+article ol {
+  margin-left: 1rem;
+  > li {
+    padding-left: 0.5rem;
+  }
+}
 
 badge {
   font-size: 0.4em;

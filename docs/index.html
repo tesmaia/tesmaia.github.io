@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
   rel="stylesheet">
-<link rel="stylesheet" href="index.css?v=slrfjp" type="text/css">
+<link rel="stylesheet" href="index.css?v=so8w5j" type="text/css">
 </head>
 
 <body>
@@ -68,7 +68,7 @@
             </div>
           </li>
           <li><a href="games.html">My Games</a></li>
-          <li><a target="_blank" href="https://ko-fi.com/vulcwen">Give me a coffee</a></li> 
+          <li><a href="about.html">About me</a></li> 
         </ul>
     </nav>
   </header>
@@ -82,6 +82,83 @@
 
     <section>
       <article>
+    <address rel="author">Tesmaia <time pubdate datetime="2020-10-21">9 Dec. 2024</time></address>
+    <h3>Like a bee in water, game update and tools</h3>
+
+    <p class="preline">
+        Here is a video of some work in progress of my new game: Like a bee in water (working title)
+    <blockquote class="bluesky-embed"
+        data-bluesky-uri="at://did:plc:6fbs4jawlsfo4jqspu56hcr7/app.bsky.feed.post/3lcnbjafcpk2d"
+        data-bluesky-cid="bafyreif74zh336pvab2xjt4kc7x2gcb6okd2pl7lfjuzw7io7en7lb5gve">
+        <p lang="en">Another day, another gameplay clip.
+
+            If I keep this up I will run out of stuff, so need to keep the development going :)
+
+            #gamedev #indiedev #godot<br><br><a
+                href="https://bsky.app/profile/did:plc:6fbs4jawlsfo4jqspu56hcr7/post/3lcnbjafcpk2d?ref_src=embed">[image
+                or embed]</a></p>&mdash; Tesmaia 🏳️‍⚧️ (<a
+            href="https://bsky.app/profile/did:plc:6fbs4jawlsfo4jqspu56hcr7?ref_src=embed">@tesmaia.bsky.social</a>) <a
+            href="https://bsky.app/profile/did:plc:6fbs4jawlsfo4jqspu56hcr7/post/3lcnbjafcpk2d?ref_src=embed">December
+            6, 2024 at 2:19 PM</a>
+    </blockquote>
+    <script async src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
+    </p>
+
+    <p class="preline">
+        Here I want to go more in depth on the process of making the game.
+        First of all, this project is going for about a year, on and off (mostly off) development, where I've spent a
+        lot of time iterating on the movement and abilities.
+    </p>
+
+    <p class="preline">
+        I think there is a pretty good basic moveset now to work with, however there are also some concepts I've not
+        entirely figured out yet. I've run into several issues:
+        <ol>
+            <li class="preline">Level design is very hard. The swimmy mechanics means that a lot of standard concepts do not apply, 
+                because of that, it's hard to build levels on intuition alone.</li>
+            <li class="preline">Building levels that are not on a grid can be very time-consuming when you have to manually construct 
+                the entire layout in detail. This makes it hard to test and iterate on what level design concepts work.</li>
+        </ol>
+    </p>
+
+    <p class="preline">
+        When I began the project, I just roughly sketched some fixed shapes. In order to make things look better, I
+        switched to SmartShape2D.
+        This plugin allows you to create curved terrain, with collision. The user interface, however, is atrocious and
+        it makes it very easy to make destructive mistakes while editing and navigating the extensive resource menu.
+    </p>
+    <p class="preline">
+        Since then I stepped away from it and instead started trying a different kind of level using just Line2D and a
+        script that builds collision for it. That however was not good enough to really build good levels in, I still
+        wanted what SmartShape2D could do, but without the severe issues it has:
+    </p>
+    <h4 class="preline">
+        Introducing ProceduralPath2D:
+    </h4>
+    <p class="preline">
+        ProceduralPath2D is a plugin I'm making that takes a different approach to building optionally curved levels.
+        Using a node derived from Path2D, I created a procedural generation platform that can take in template scenes
+        and wrap the contents around the path.
+    </p>
+    <p class="preline">
+        The concept is very simple: The X axis in the template is ignored, and the Y position determines how far away
+        from a path a node should be wrapped along a path.
+        Scripts can be invoked for each control point to add additional procedural content. With that method I can also
+        randomly place other objects, perfectly snapped along the path.
+    </p>
+    <p class="preline">
+        <h-flex class="gap-8 mt-8">
+            <img style="max-width: 100%;"
+                src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:6fbs4jawlsfo4jqspu56hcr7/bafkreifq3ilfxn5yr454ttza5rxaxwnbsr4frexpfft7p7g5ts5onpwnte@jpeg">
+        </h-flex>
+    </p>
+
+    <p class="preline">
+        As work on the game continues, this plugin will also continue to evolve. Once I'm happy about it, 
+        I'll release it as open source and try to get it in the asset manager.
+    </p>
+</article>
+<article>
     <address rel="author">Tesmaia <time pubdate datetime="2020-10-21">21 Oct. 2024</time></address>
     <h3>Starting my website</h3>
 

@@ -17,6 +17,8 @@ func getFiles(dir string) []string {
 	return []string{
 		"index.html",
 		"games.html",
+		"about.html",
+		"curved_terrain.html",
 	}
 }
 
