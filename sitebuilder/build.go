@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const basePath = ".\\.."
+const basePath = "./.."
 
 func getFiles(dir string) []string {
 	return []string{
@@ -31,7 +31,7 @@ func Map[T, V any](ts []T, fn func(T) V) []V {
 }
 
 func getFragments() map[string]string {
-	files, err := ioutil.ReadDir(basePath + "\\fragments")
+	files, err := ioutil.ReadDir(basePath + "/fragments")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -45,7 +45,7 @@ func getFragments() map[string]string {
 
 		fileName := fileInfo.Name()
 
-		data, err := ioutil.ReadFile(basePath + "\\fragments\\" + fileName)
+		data, err := ioutil.ReadFile(basePath + "/fragments/" + fileName)
 
 		if err == nil {
 			fragments[fileName] = string(data)
@@ -101,7 +101,7 @@ func main() {
 	fragments := getFragments()
 
 	for _, file := range files {
-		data, err := ioutil.ReadFile(basePath + "\\" + file)
+		data, err := ioutil.ReadFile(basePath + "/" + file)
 		if err != nil {
 			panic(err)
 		}
@@ -121,7 +121,7 @@ func main() {
 		text = applyCacheBust(text)
 
 		toWrite := []byte(text)
-		err = ioutil.WriteFile(basePath+"\\docs\\"+file, toWrite, 0777)
+		err = ioutil.WriteFile(basePath+"/docs/"+file, toWrite, 0777)
 		if err == nil {
 			fmt.Println("File written succesfully: " + file)
 		} else {
