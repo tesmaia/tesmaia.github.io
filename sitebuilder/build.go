@@ -14,12 +14,27 @@ import (
 const basePath = "./.."
 
 func getFiles(dir string) []string {
+	files, err := ioutil.ReadDir(dir + "/pages")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var result = []string{}
+
+	for _, fileInfo := range files {
+		result = append(result, fileInfo.Name())
+	}
+
+	return result
+
+
+/*
 	return []string{
 		"index.html",
 		"games.html",
 		"about.html",
 		"curved_terrain.html",
-	}
+	} */
 }
 
 func Map[T, V any](ts []T, fn func(T) V) []V {
@@ -101,7 +116,7 @@ func main() {
 	fragments := getFragments()
 
 	for _, file := range files {
-		data, err := ioutil.ReadFile(basePath + "/" + file)
+		data, err := ioutil.ReadFile(basePath + "/pages/" +  file)
 		if err != nil {
 			panic(err)
 		}
