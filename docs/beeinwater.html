@@ -2,14 +2,41 @@
 <html lang="">
   <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+
 <title>Tessa makes stuff - Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
   rel="stylesheet">
-<link rel="stylesheet" href="index.css?v=swu7yq" type="text/css">
+<link rel="stylesheet" href="index.css?v=swzq72" type="text/css">
+<script>
+function themechanged() {
+    var value = '0';
+    if(document.getElementById('themeswitch').checked) {
+        value = '1';
+    }
+    window.localStorage.setItem('lighttheme', value);
+}
+
+window.onload = (ev) => {
+    var light = window.localStorage.getItem('lighttheme') == '1'
+    document.getElementById('themeswitch').checked = light;
+};
+
+</script>
+
   </head>
   <body class="beeinwater">
+    <background style="opacity: 0.35;">
+      <img src="beeinwater_bg_blurred.webp">
+    </background>
+    <aside style="position: fixed;top: calc(100vh - 4px - 35px);left: 14px;z-index: 100;">
+<a style="position: relative;width: 20px;" class=""><div style="height: 25px;width: 25px;position: absolute;top: -3px;z-index: -2;left: 3px;" class="themeswitch_icon"></div><input type="checkbox" id="themeswitch" style="opacity: 0;height: 25px;width: 25px;cursor: pointer;position: absolute;z-index: 100;" onclick="themechanged();"></a>
+</aside>
+
+
     <header>
       <h1><a href="index.html">Tessa makes stuff</a></h1>
       <nav>
@@ -96,10 +123,6 @@
       </section>
 
     </main>
-    <background style="position: absolute;top: 0;z-index: -1000; display: flex;left: 0;right: 0;width: 100vw;opacity: 0.35;">
-      <img style="width: 100vw;" src="beeinwater_bg_blurred.webp">
 
-
-    </background>
   </body>
 </html>
