@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
   rel="stylesheet">
-<link rel="stylesheet" href="index.css?v=swzq72" type="text/css">
+<link rel="stylesheet" href="index.css?v=sx2y7l" type="text/css">
 <script>
 function themechanged() {
     var value = '0';
@@ -98,11 +98,38 @@ window.onload = (ev) => {
     <main>
       <section>
         <h2 class="size-xl">Devlog: Like a bee in water</h2>
+
+        <article>
+          <p>
+            A swimmy metroidvania inspired by Ori and the Blind forest and Ynglet. Explore a place long lost, find out the cause of its fall and restore the ecosystem along your journey.
+          </p>
+        </article>
       </section>
 
       <separator>
 
       <section>
+      <article>
+        <address rel="author">Tesmaia <time pubdate datetime="2020-10-21">25 May 2025</time></address>
+        <h3>Gameplay sketch</h3>
+
+        <p class="preline">
+          The core gameplay is about swimming through, jumping from droplet to droplet and climbing the terrain of this lost world. Interact with the world to open up new areas and restore its ecosystem.
+          Player abilities are primarily designed for movement and can be used to use enemy attacks against themselves or to open up new places to explore.
+
+          Swimming has a bit of inertia to it, while feeling satisfying to use. You can use skills to move or change direction faster. Once outside the water, your movement is limited. At some point in the game you will be able to cling onto surfaces and jump off them, slowly opening up the world in the air. When submerged in water, you can encounter water currents and various threats that you need to navigate around.
+
+          As you go, you collect Nectar, which can be used to restore the ecosystem. A restored ecosystem may open up new areas, which can grant you new abilities.
+
+          <h-flex>
+            <video width="600" height="338" muted autoplay loop style="max-width: 100%; margin-left: auto; margin-right: auto;">
+              <source src="swim_600.mp4" type="video/mp4">
+              Your browser currently does not support video tags.
+            </video>
+          </h-flex>
+        </p>
+      </article>
+
       <article>
         <address rel="author">Tesmaia <time pubdate datetime="2020-10-21">25 May 2025</time></address>
         <h3>Using ProceduralPath2D to build levels</h3>
@@ -115,11 +142,12 @@ window.onload = (ev) => {
         Smooth curves are easy, and the editor does not grind to a halt or glitch out after filling it with plenty of elements and making shapes span large distances. That said, I've decided to still cut levels into pieces and building each piece out of 1-3 procedural curves depending on the topology.
 
         Using the procedural system, I also managed to create a simple map system.
-        <img src="beeinwater_demo_map.webp" style="border: 2px solid rgba(255,255,255,0.5); margin-top:1em; margin-bottom:1em">
+        <img src="beeinwater_demo_map.webp" style="border: 2px solid var(--border-dim); margin-top:1em; margin-bottom:1em">
         I'm quite happy on how useful this is.
 
         Next up: it's time to share some actual gameplay design.
         </p>
+      </article>
       </section>
 
     </main>
